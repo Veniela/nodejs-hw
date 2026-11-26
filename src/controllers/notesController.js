@@ -2,7 +2,6 @@
 import createHttpError from 'http-errors';
 import Note from '../models/note.js';
 
-// GET /notes
 export const getAllNotes = async (req, res, next) => {
   try {
     const notes = await Note.find();
@@ -40,7 +39,6 @@ export const createNote = async (req, res, next) => {
   }
 };
 
-// DELETE /notes/:noteId
 export const deleteNote = async (req, res, next) => {
   try {
     const { noteId } = req.params;

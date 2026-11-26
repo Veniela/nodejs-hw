@@ -27,7 +27,7 @@ app.use(notFoundHandler);
 // Middleware для обробки помилок
 app.use(errorHandler);
 
-// Запуск сервера
+// Запуск 
 const PORT = process.env.PORT || 3000;
 
 const startServer = async () => {
