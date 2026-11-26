@@ -57,7 +57,6 @@ export const deleteNote = async (req, res, next) => {
   }
 };
 
-// PATCH /notes/:noteId
 export const updateNote = async (req, res, next) => {
   try {
     const { noteId } = req.params;
