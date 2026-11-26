@@ -1,7 +1,7 @@
-
 import createHttpError from 'http-errors';
 import Note from '../models/note.js';
 
+// GET /notes
 export const getAllNotes = async (req, res, next) => {
   try {
     const notes = await Note.find();
@@ -12,6 +12,7 @@ export const getAllNotes = async (req, res, next) => {
   }
 };
 
+// GET /notes/:noteId
 export const getNoteById = async (req, res, next) => {
   try {
     const { noteId } = req.params;
@@ -39,6 +40,7 @@ export const createNote = async (req, res, next) => {
   }
 };
 
+// DELETE /notes/:noteId
 export const deleteNote = async (req, res, next) => {
   try {
     const { noteId } = req.params;
@@ -55,18 +57,15 @@ export const deleteNote = async (req, res, next) => {
   }
 };
 
+// PATCH /notes/:noteId
 export const updateNote = async (req, res, next) => {
   try {
     const { noteId } = req.params;
 
-    const note = await Note.findByIdAndUpdate(
-      noteId,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      },
-    );
+    const note = await Note.findByIdAndUpdate(noteId, req.body, {
+      returnDocument: 'after',
+      runValidators: true,
+    });
 
     if (!note) {
       throw createHttpError(404, 'Note not found');
