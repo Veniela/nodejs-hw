@@ -13,7 +13,6 @@ export const getAllNotes = async (req, res, next) => {
   }
 };
 
-// GET /notes/:noteId
 export const getNoteById = async (req, res, next) => {
   try {
     const { noteId } = req.params;
